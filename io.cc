@@ -1468,5 +1468,40 @@ void output_UCA(uca_org_t *fr)
     wpr.print_wire();
 
     //cout << "FO4 = " << g_tp.FO4 << endl;
+    
+    // === [User Debug] SA, iReg, oReg Stats for CIM/Ising Machine ===
+    cout << "\n\n";
+    cout << "╔══════════════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║     [User Debug] Component PPA for CIM/Ising Machine                 ║" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "  Technology node: " << g_ip->F_sz_nm << " nm" << endl;
+    cout << "  Block size (output width): " << g_ip->line_sz * 8 << " bits" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║                    Sense Amplifier (SA) Stats                        ║" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "  SA Dynamic Energy (per read, nJ): " << fr->data_array2->power_sense_amps.readOp.dynamic * 1e9 << endl;
+    cout << "  SA Leakage Power (mW): " << fr->data_array2->power_sense_amps.readOp.leakage * 1e3 << endl;
+    cout << "  SA Delay (ns): " << fr->data_array2->delay_sense_amp * 1e9 << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║               Output Register (oReg) / Output Driver                 ║" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "  oReg Dynamic Energy (nJ): " << fr->data_array2->power_output_drivers_at_subarray.readOp.dynamic * 1e9 << endl;
+    cout << "  oReg Leakage Power (mW): " << fr->data_array2->power_output_drivers_at_subarray.readOp.leakage * 1e3 << endl;
+    cout << "  oReg Delay (ns): " << fr->data_array2->delay_subarray_output_driver * 1e9 << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║               Input Register (iReg) / Bitline Stats                  ║" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "  Bitline Dynamic Energy (nJ): " << fr->data_array2->power_bitlines.readOp.dynamic * 1e9 << endl;
+    cout << "  Bitline Leakage Power (mW): " << fr->data_array2->power_bitlines.readOp.leakage * 1e3 << endl;
+    cout << "  Bitline Delay (ns): " << fr->data_array2->delay_bitlines * 1e9 << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║                         H-tree (Bus) Stats                           ║" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "  H-tree Input Energy (nJ): " << fr->data_array2->power_addr_input_htree.readOp.dynamic * 1e9 << endl;
+    cout << "  H-tree Output Energy (nJ): " << fr->data_array2->power_data_output_htree.readOp.dynamic * 1e9 << endl;
+    cout << "  H-tree Input Delay (ns): " << fr->data_array2->delay_input_htree * 1e9 << endl;
+    cout << "  H-tree Output Delay (ns): " << fr->data_array2->delay_dout_htree * 1e9 << endl;
+    cout << "╚══════════════════════════════════════════════════════════════════════╝" << endl;
+    cout << endl;
   }
 }
