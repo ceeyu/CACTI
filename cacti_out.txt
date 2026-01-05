@@ -1,0 +1,190 @@
+Cache size                    : 4096
+Block size                    : 128
+Associativity                 : 1
+Read only ports               : 0
+Write only ports              : 0
+Read write ports              : 1
+Single ended read ports       : 0
+Cache banks (UCA)             : 1
+Technology                    : 0.065
+Temperature                   : 350
+Tag size                      : 42
+cache type                    : Scratch RAM
+Model as memory               : 0
+Access mode                   : 2
+Data array cell type          : 0
+Data array peripheral type    : 0
+Tag array cell type           : 0
+Tag array peripheral type     : 0
+Design objective (UCA wt)     : 0 0 0 0 100
+Design objective (UCA dev)    : 100 100000 100000 100000 100000
+Design objective (NUCA wt)    : 0 0 0 0 0
+Design objective (NUCA dev)   : 0 0 0 0 0
+Cache model                   : 0
+Nuca bank                     : 0
+Wire inside mat               : 2
+Wire outside mat              : 2
+Interconnect projection       : 1
+Wire signalling               : 1
+Cores                         : 8
+Print level                   : 1
+ECC overhead                  : 0
+Page size                     : 8192
+Burst length                  : 8
+Internal prefetch width       : 8
+Force cache config            : 0
+
+---------- CACTI version 6.5, Uniform Cache Access SRAM Model ----------
+
+Cache Parameters:
+    Total cache size (bytes): 4096
+    Number of banks: 1
+    Associativity: direct mapped
+    Block size (bytes): 128
+    Read/write Ports: 1
+    Read ports: 0
+    Write ports: 0
+    Technology size (nm): 65
+
+    Access time (ns): 0.502025
+    Cycle time (ns):  0.667958
+    Total dynamic read energy per access (nJ): 0.0443457
+    Total leakage power of a bank (mW): 5.22643
+    Cache height x width (mm): 0.571887 x 0.726598
+
+    Best Ndwl : 2
+    Best Ndbl : 1
+    Best Nspd : 1
+    Best Ndcm : 1
+    Best Ndsam L1 : 1
+    Best Ndsam L2 : 1
+
+    Data array, H-tree wire type: Delay optimized global wires
+
+Time Components:
+
+  Data side (with Output driver) (ns): 0.502025
+	H-tree input delay (ns): 0
+	Decoder + wordline delay (ns): 0.319711
+	Bitline delay (ns): 0.0858953
+	Sense Amplifier delay (ns): 0.0071412
+	H-tree output delay (ns): 0.0892775
+
+
+Power Components:
+
+  Data array: Total dynamic read energy/access  (nJ): 0.0443457
+	Total leakage read/write power of a bank (mW): 5.22643
+	Total energy in H-tree (that includes both address and data transfer) (nJ): 0
+	Output Htree Energy (nJ): 0
+	Decoder (nJ): 0.000106753
+	Wordline (nJ): 0.00049282
+	Bitline mux & associated drivers (nJ): 0
+	Sense amp mux & associated drivers (nJ): 0
+	Bitlines (nJ): 0.00257852
+	Sense amplifier energy (nJ): 0.00325881
+	Sub-array output driver (nJ): 0.0345591
+
+
+Area Components:
+
+  Data array: Area (mm2): 0.415532
+	Height (mm): 0.571887
+	Width (mm): 0.726598
+	Area efficiency (Memory cell area/Total area) - 4.86435 %
+		MAT Height (mm): 0.571887
+		MAT Length (mm): 0.726598
+		Subarray Height (mm): 0.030368
+		Subarray Length (mm): 0.3484
+
+Wire Properties:
+
+  Delay Optimal
+	Repeater size - 262.084 
+	Repeater spacing - 0.774473 (mm) 
+	Delay - 0.0395172 (ns/mm) 
+	PowerD - 0.00066196 (nJ/mm) 
+	PowerL - 0.0244429 (mW/mm)
+	Wire width - 0.26 microns
+	Wire spacing - 0.26 microns
+
+  5% Overhead
+	Repeater size - 132.084 
+	Repeater spacing - 1.07447 (mm) 
+	Delay - 0.0414871 (ns/mm) 
+	PowerD - 0.000420225 (nJ/mm) 
+	PowerL - 0.00887918 (mW/mm)
+	Wire width - 0.26 microns
+	Wire spacing - 0.26 microns
+
+  10% Overhead
+	Repeater size - 124.084 
+	Repeater spacing - 1.27447 (mm) 
+	Delay - 0.0433956 (ns/mm) 
+	PowerD - 0.000396886 (nJ/mm) 
+	PowerL - 0.00703239 (mW/mm)
+	Wire width - 0.26 microns
+	Wire spacing - 0.26 microns
+
+  20% Overhead
+	Repeater size - 102.084 
+	Repeater spacing - 1.47447 (mm) 
+	Delay - 0.0474156 (ns/mm) 
+	PowerD - 0.000366351 (nJ/mm) 
+	PowerL - 0.00500079 (mW/mm)
+	Wire width - 0.26 microns
+	Wire spacing - 0.26 microns
+
+  30% Overhead
+	Repeater size - 90.0838 
+	Repeater spacing - 1.67447 (mm) 
+	Delay - 0.0512469 (ns/mm) 
+	PowerD - 0.000350421 (nJ/mm) 
+	PowerL - 0.00388586 (mW/mm)
+	Wire width - 0.26 microns
+	Wire spacing - 0.26 microns
+
+  Low-swing wire (1 mm) - Note: Unlike repeated wires, 
+	delay and power values of low-swing wires do not
+	have a linear relationship with length. 
+	delay - 0.80954 (ns) 
+	powerD - 5.83341e-05 (nJ) 
+	PowerL - 5.87574e-06 (mW)
+	Wire width - 5.2e-07 microns
+	Wire spacing - 5.2e-07 microns
+
+
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║     [User Debug] Component PPA for CIM/Ising Machine                 ║
+╠══════════════════════════════════════════════════════════════════════╣
+  Technology node: 65 nm
+  Block size (output width): 1024 bits
+╠══════════════════════════════════════════════════════════════════════╣
+║                    Sense Amplifier (SA) Stats                        ║
+╠══════════════════════════════════════════════════════════════════════╣
+  SA Dynamic Energy (per read, nJ): 0.00325881
+  SA Leakage Power (mW): 0
+  SA Delay (ns): 0.0071412
+╠══════════════════════════════════════════════════════════════════════╣
+║               Output Register (oReg) / Output Driver                 ║
+╠══════════════════════════════════════════════════════════════════════╣
+  oReg Dynamic Energy (nJ): 0.0345591
+  oReg Leakage Power (mW): 0
+  oReg Delay (ns): 0.0892775
+╠══════════════════════════════════════════════════════════════════════╣
+║               Input Register (iReg) / Bitline Stats                  ║
+╠══════════════════════════════════════════════════════════════════════╣
+  Bitline Dynamic Energy (nJ): 0.00257852
+  Bitline Leakage Power (mW): 0
+  Bitline Delay (ns): 0.0858953
+╠══════════════════════════════════════════════════════════════════════╣
+║                         H-tree (Bus) Stats                           ║
+╠══════════════════════════════════════════════════════════════════════╣
+  H-tree Input Energy (nJ): 0
+  H-tree Output Energy (nJ): 0
+  H-tree Input Delay (ns): 0
+  H-tree Output Delay (ns): 0
+╚══════════════════════════════════════════════════════════════════════╝
+
