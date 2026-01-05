@@ -103,6 +103,13 @@ class Mat : public Component
     double   leak_power_sense_amps_closed_page_state;
     double   leak_power_sense_amps_open_page_state;
     double   delay_subarray_out_drv;
+    
+    // [User Added] Area for individual components (um^2)
+    double   area_sense_amps;
+    double   area_subarray_out_drv;
+    double   area_bitlines;
+    double   area_precharge;
+    
     double   delay_subarray_out_drv_htree;
     double   delay_comparator;
     powerDef power_comparator;

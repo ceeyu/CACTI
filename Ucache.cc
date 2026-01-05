@@ -329,6 +329,12 @@ bool calculate_time(
     ptr_array->power_output_drivers_at_subarray.readOp.dynamic = uca->bank.mat.power_subarray_out_drv.readOp.dynamic * dyn_p.num_act_mats_hor_dir;
     ptr_array->power_comparators.readOp.dynamic = uca->bank.mat.power_comparator.readOp.dynamic * dyn_p.num_act_mats_hor_dir;
 
+    // [User Added] Transfer individual component areas from Mat to mem_array
+    ptr_array->area_sense_amps = uca->bank.mat.area_sense_amps * dyn_p.num_act_mats_hor_dir;
+    ptr_array->area_subarray_out_drv = uca->bank.mat.area_subarray_out_drv * dyn_p.num_act_mats_hor_dir;
+    ptr_array->area_bitlines = uca->bank.mat.area_bitlines * dyn_p.num_act_mats_hor_dir;
+    ptr_array->area_precharge = uca->bank.mat.area_precharge * dyn_p.num_act_mats_hor_dir;
+
     ptr_array->activate_energy = uca->activate_energy;
     ptr_array->read_energy = uca->read_energy;
     ptr_array->write_energy = uca->write_energy;

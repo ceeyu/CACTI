@@ -437,6 +437,12 @@ class mem_array
   powerDef power_dataout_vertical_htree;
   powerDef power_comparators;
 
+  // [User Added] Area for individual components (for CIM/Ising Machine)
+  double area_sense_amps;           // SA area (um^2)
+  double area_subarray_out_drv;     // Output driver / oReg area (um^2)
+  double area_bitlines;             // Bitline / iReg area (um^2)
+  double area_precharge;            // Precharge circuit area (um^2)
+
   min_values_t *arr_min;
   enum Wire_type wt;
 

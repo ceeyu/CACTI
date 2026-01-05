@@ -57,7 +57,8 @@ Mat::Mat(const DynamicParameter & dyn_p)
   power_sa(), delay_sa(0),
   leak_power_sense_amps_closed_page_state(0),
   leak_power_sense_amps_open_page_state(0),
-  delay_subarray_out_drv(0), 
+  delay_subarray_out_drv(0),
+  area_sense_amps(0), area_subarray_out_drv(0), area_bitlines(0), area_precharge(0),
   delay_comparator(0), power_comparator(), num_do_b_mat(dyn_p.num_do_b_mat),
   num_subarrays_per_mat(dp.num_subarrays/dp.num_mats),
   num_subarrays_per_row(dp.Ndwl/dp.num_mats_h_dir)
@@ -219,6 +220,9 @@ Mat::Mat(const DynamicParameter & dyn_p)
   {
     h_subarray_out_drv  = 0;
   }
+  
+  // [User Added] Calculate output driver (oReg) area
+  area_subarray_out_drv = h_subarray_out_drv * subarray.area.get_w() * num_subarrays_per_mat;
 
   double h_comparators                = 0.0;
   double w_row_predecode_output_wires = 0.0;
@@ -439,9 +443,13 @@ double Mat::compute_delays(double inrisetime)
 
 double Mat::compute_bit_mux_sa_precharge_sa_mux_wr_drv_wr_mux_h()
 {
-
-  double height = compute_tr_width_after_folding(g_tp.w_pmos_bl_precharge, cell.w / (2 *(RWP + ERP))) + 
-    compute_tr_width_after_folding(g_tp.w_pmos_bl_eq, cell.w / (RWP + ERP));  // precharge circuitry
+  // [User Modified] Track individual component heights for area calculation
+  
+  // Precharge circuitry height
+  double h_precharge = compute_tr_width_after_folding(g_tp.w_pmos_bl_precharge, cell.w / (2 *(RWP + ERP))) + 
+    compute_tr_width_after_folding(g_tp.w_pmos_bl_eq, cell.w / (RWP + ERP));
+  
+  double height = h_precharge;
 
   if (deg_bl_muxing > 1)
   {
@@ -449,7 +457,9 @@ double Mat::compute_bit_mux_sa_precharge_sa_mux_wr_drv_wr_mux_h()
     // height += deg_bl_muxing * g_tp.wire_inside_mat.pitch * (RWP + ERP);  // bit mux dec out wires height
   }
 
-  height += height_sense_amplifier(cell.w * deg_bl_muxing / (RWP + ERP));  // sense_amp_height
+  // Sense amplifier height
+  double h_sense_amp = height_sense_amplifier(cell.w * deg_bl_muxing / (RWP + ERP));
+  height += h_sense_amp;
 
   if (dp.Ndsam_lev_1 > 1)
   {
@@ -481,6 +491,21 @@ double Mat::compute_bit_mux_sa_precharge_sa_mux_wr_drv_wr_mux_h()
   dp.Ndsam_lev_1 * dp.Ndsam_lev_2 / (RWP + EWP));
   height += height_write_driver_write_mux;  
   }*/
+
+  // [User Added] Calculate individual component areas
+  // Width for SA = subarray width (all SA share the same row)
+  double w_subarray = subarray.area.get_w();
+  int num_sa_per_subarray = subarray.num_cols / deg_bl_muxing;
+  
+  // SA area: height * width of one SA * number of SA in the mat
+  area_sense_amps = h_sense_amp * w_subarray * num_subarrays_per_mat;
+  
+  // Precharge area
+  area_precharge = h_precharge * w_subarray * num_subarrays_per_mat;
+  
+  // Bitline area: cell height * cell width * number of bitlines
+  // Bitline runs the full height of the subarray
+  area_bitlines = subarray.area.get_h() * w_subarray * num_subarrays_per_mat;
 
   return height;
 }

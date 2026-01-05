@@ -1501,6 +1501,17 @@ void output_UCA(uca_org_t *fr)
     cout << "  H-tree Output Energy (nJ): " << fr->data_array2->power_data_output_htree.readOp.dynamic * 1e9 << endl;
     cout << "  H-tree Input Delay (ns): " << fr->data_array2->delay_input_htree * 1e9 << endl;
     cout << "  H-tree Output Delay (ns): " << fr->data_array2->delay_dout_htree * 1e9 << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "║                    Component Area Breakdown                          ║" << endl;
+    cout << "╠══════════════════════════════════════════════════════════════════════╣" << endl;
+    cout << "  SA Area (um^2): " << fr->data_array2->area_sense_amps << endl;
+    cout << "  SA Area (mm^2): " << fr->data_array2->area_sense_amps * 1e-6 << endl;
+    cout << "  oReg/Output Driver Area (um^2): " << fr->data_array2->area_subarray_out_drv << endl;
+    cout << "  oReg/Output Driver Area (mm^2): " << fr->data_array2->area_subarray_out_drv * 1e-6 << endl;
+    cout << "  iReg/Bitline Area (um^2): " << fr->data_array2->area_bitlines << endl;
+    cout << "  iReg/Bitline Area (mm^2): " << fr->data_array2->area_bitlines * 1e-6 << endl;
+    cout << "  Precharge Area (um^2): " << fr->data_array2->area_precharge << endl;
+    cout << "  Precharge Area (mm^2): " << fr->data_array2->area_precharge * 1e-6 << endl;
     cout << "╚══════════════════════════════════════════════════════════════════════╝" << endl;
     cout << endl;
   }
